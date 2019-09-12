@@ -10,9 +10,9 @@ class App extends React.Component {
   state = {
     name: ""
   }
-  changeName = (name) =>{
+  changeName = (e) =>{
     this.setState({
-      name
+      name: e.target.value
     })
   }
   render(){
