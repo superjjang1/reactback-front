@@ -2,20 +2,34 @@ import React, {Component} from 'react';
 
 
 class Setup extends Component {
+    constructor(){
+        super();
+        this.state={
+            name: "",
+            budget: 0
+        }
+    }
+    changeName=(e)=>{this.setState({name: e.target.value})}
+    changeBudget=(e)=>{this.setState({budget: e.target.value})}
+
+    submitSetup = (e) =>{
+        e.preventDefault()
+        console.log(this.state.budget, this.state.name)
+    }
     render(){
         return (
             <div className="col col-sm-12">
                 <form onSubmit={this.submitSetup}>
                     {/* bootstrap box */}
                     <div className="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" className="form-control" id="name"/>
+                        <label htmlFor="name">Name</label>
+                        <input type="text" value={this.state.name} onChange={this.changeName} className="form-control" id="name"/>
                     </div>
                     <div className="form-group">
-                        <label for="total-budget">What is your budget?</label>
-                        <input type="number" className="form-control" id="total-budget"/>
+                        <label htmlFor="total-budget">What is your budget?</label>
+                        <input type="number" value={this.state.budget} onChange={this.changeBudget} className="form-control" id="total-budget"/>
                     </div>
-
+                    <button type="submit" className="btn btn-primary">Submit</button>
                     
                 </form>
             </div>
