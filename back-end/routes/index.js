@@ -9,9 +9,16 @@ router.post('/setup', async (req, res)=>{
   VALUES
   ($1, $2)
   `
-  const inserted = await db.query(insertQuery, [name, budget]);
+  const inserted = await db.query(insertQuery, [name, budget])
 
-  res.json(req.body)
+  res.json({
+    msg: "added"
+  })
+});
+router.get('/get-dudes',(req,res)=>{
+  res.json({
+    msg: "you found me!"
+  })
 })
 
 module.exports = router;
