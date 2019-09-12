@@ -10,8 +10,5 @@ const db = pgp({
     port: process.env.DB_PORT,
     database: process.env.DB_NAME
 });
-console.log(process.env.DB_HOST);
-console.log(process.env.DB_PORT);
-console.log(process.env.DB_NAME);
-console.log('yay you did the thing. wow.');
+console.log('connected to db');
 module.exports = db;
