@@ -22,9 +22,16 @@ class Setup extends Component {
                 name: this.state.name,
                 budget: this.state.budget
             },
+            headers: {
+
+            },
             url: setUpUrl
         });
-        console.log(setupResponse);
+        if(setupResponse.data.msg === "added"){
+            this.props.history.push('/');
+        }else{
+            this.props.history.push('error')
+        }
     }
     render(){
         return (

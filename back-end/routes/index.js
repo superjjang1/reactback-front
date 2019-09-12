@@ -2,11 +2,15 @@ var express = require('express');
 var router = express.Router();
 const db = require('../db');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-router.post('/setup',(req, res)=>{
+router.post('/setup', async (req, res)=>{
+  const { name, budget } = req.body;
+  const insertQuery = `
+  INSERT INTO dudes (name, budget)
+  VALUES
+  ($1, $2)
+  `
+  const inserted = await db.query(insertQuery, [name, budget]);
+
   res.json(req.body)
 })
 
