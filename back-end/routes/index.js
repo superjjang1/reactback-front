@@ -19,6 +19,13 @@ router.get('/get-dudes',(req,res)=>{
   res.json({
     msg: "you found me!"
   })
+});
+router.get('/get-dudes',(req,res)=>{
+  const {name} = req.body;
+  const getQuery =`
+  SELECT name FROM dudes
+  WHERE name = $1
+  `
 })
 
 module.exports = router;
