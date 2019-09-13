@@ -12,7 +12,7 @@ class Home extends Component {
     getDude = async () =>{
         const getDudesUrl =`${window.apiUrl}/get-dudes`
         const dudeInfo = await axios.post(getDudesUrl,
-            {name:this.state.props.name});
+            {name:this.props.name});
         console.log(dudeInfo)
     }
     submitNameHandler=(e)=>{

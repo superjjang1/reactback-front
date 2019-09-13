@@ -20,12 +20,16 @@ router.get('/get-dudes',(req,res)=>{
     msg: "you found me!"
   })
 });
-router.get('/get-dudes',(req,res)=>{
+router.post('/get-dudes',async (req,res)=>{
   const {name} = req.body;
   const getQuery =`
-  SELECT name FROM dudes
+  SELECT * FROM dudes
   WHERE name = $1
   `
+  const dudeInfo = await db.query(getQuery, [name])
+  res.json({
+    dudeInfo: dudeInfo[0]
+  })
 })
 
 module.exports = router;
