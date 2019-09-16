@@ -14,6 +14,7 @@ class Home extends Component {
         const dudeInfo = await axios.post(getDudesUrl,
             {name:this.props.name});
         console.log(dudeInfo)
+        this.props.setDudeInfo(dudeInfo)
     }
     submitNameHandler=(e)=>{
         e.preventDefault(); //prevents it from going forward
@@ -39,6 +40,7 @@ class Home extends Component {
         }
         return (
             <div className="col col-sm-12">
+                
                 <div className="total-budget">
                     Total Budget: $11,000
                 </div>
