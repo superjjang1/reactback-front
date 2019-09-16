@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 class Home extends Component {
+    //normally uses constructor, but in react 16 if you're just going to define state, you don't need to define 
+    // anything in the constructor.
     state = {
         submitName: false
     }
@@ -14,7 +16,7 @@ class Home extends Component {
         const dudeInfo = await axios.post(getDudesUrl,
             {name:this.props.name});
         console.log(dudeInfo)
-        this.props.setDudeInfo(dudeInfo)
+        this.props.setDudeInfo(dudeInfo.data)
     }
     submitNameHandler=(e)=>{
         e.preventDefault(); //prevents it from going forward
@@ -23,6 +25,8 @@ class Home extends Component {
         },this.getDude)
     }
     render(){
+        
+        //if we don't know who the user is, we ask them.
         if(!this.state.submitName){
             const form = 
             <form onSubmit={this.submitNameHandler}>
@@ -42,7 +46,7 @@ class Home extends Component {
             <div className="col col-sm-12">
                 
                 <div className="total-budget">
-                    Total Budget: $11,000
+                    Total Budget: $ hello from the otherside.
                 </div>
                 <div className="total-spent">
                     Total Spent: $550
